@@ -29,7 +29,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: |
-                    rk1.tex
+                    ./Math_Analysis/rk1/rk1.tex
           args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           compiler: latexmk
       - name: Upload PDF file
