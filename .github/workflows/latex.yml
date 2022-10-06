@@ -24,5 +24,12 @@ jobs:
               fi
             done
             echo "{TEX_FILES}={"${FILES}"}">>$GITHUB_ENV
-            echo "${FILES}"
-            echo ${{env.TEX_FILES}}
+      - name: Build Documents
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: ${{TEX_FILES}}
+          working_directory: latex_sources/
+          args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          compiler: latexmk
+      - name: Upload PDF file
+        run: ls -la
