@@ -13,9 +13,10 @@ jobs:
 
     steps:
       - name: Set up Git repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: Get latex files
         run: |
+          echo ls -la
           FILES=""
           for file in `find -type f -name "*.tex"`
             do
