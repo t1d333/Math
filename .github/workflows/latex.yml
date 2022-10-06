@@ -22,8 +22,8 @@ jobs:
               if [[ $file != *anki.tex ]]; then
                 FILES="${file} ${FILES}"
               fi
-            done
-            echo "{TEX_FILES}={"${FILES}"}">>$GITHUB_ENV
+            done          
+          echo "TEX_FILES=$(echo $FILES)" >> $GITHUB_ENV
       - name: Build Documents
         uses: xu-cheng/latex-action@v2
         with:
