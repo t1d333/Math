@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main", "ci/cd-configure" ]
+  pull_request:
+    branches: [ "main" ]    
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      TEX_FILES: ""
+
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name : Get latex files
+        run: | 
+            FILES=""
+            for file in `find ../../ -type f -name "*.tex"`
+                do
+		            if [[ $file != *anki.tex ]]; then
+                        FILES="${FILES}"${file}""
+                    fi
+                done
+            echo "{TEX_FILES}={"${FILES}"}" >> $GITHUB_ENV
+            echo ${{env.TEX_FILES}}
