@@ -21,7 +21,7 @@ jobs:
           for file in `find -type f -name "*.tex"`
             do
               if [[ $file != *anki.tex ]]; then
-                FILES="${file} ${FILES}"
+                FILES="$(basename ${file}) ${FILES}"
               fi
             done          
           echo "TEX_FILES=$(echo $FILES)" >> $GITHUB_ENV
