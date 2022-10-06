@@ -27,8 +27,9 @@ jobs:
       - name: Build Documents
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{env.TEX_FILES}}
-          working_directory: latex_sources/
+          root_file: |
+                    ${{env.TEX_FILES}}
+          working_directory: .
           args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           compiler: latexmk
       - name: Upload PDF file
