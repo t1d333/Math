@@ -5,11 +5,11 @@ on:
     branches: ["main", "ci/cd-configure"]
   pull_request:
     branches: ["main"]
+env:
+  TEX_FILES: ""
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      TEX_FILES: ""
 
     steps:
       - name: Set up Git repository
@@ -27,7 +27,7 @@ jobs:
       - name: Build Documents
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{TEX_FILES}}
+          root_file: ${{env.TEX_FILES}}
           working_directory: latex_sources/
           args: -jobname=my_doc -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           compiler: latexmk
